@@ -1,0 +1,44 @@
+let min = 32405311;
+let max = 33732367;
+var items = Array(
+);
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function rnd(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
+while (true) {
+    let fi = rnd(min,max);
+    let part_id = rnd(min, max);
+
+    var item = items[Math.floor(Math.random()*items.length)];
+    var item2 = items[Math.floor(Math.random()*items.length)];
+    fetch("https://ficbook.net/ajax/public_beta", {
+            "headers": {
+            "accept": "*/*",
+            "accept-language": "ru-RU,ru;q=0.9",
+            "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "sec-ch-ua": "\"Chromium\";v=\"110\", \"Not A(Brand\";v=\"24\", \"Google Chrome\";v=\"110\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-origin",
+            "x-requested-with": "XMLHttpRequest"
+            },
+            "referrer": "https://ficbook.net/readfic/9786712/25193434",
+            "referrerPolicy": "strict-origin-when-cross-origin",
+            "body": "selected_text=8hoursking на месте&context=" + item + "&comment=" + item2 +  "&fanfic_id=" + fi + "&part_id="+ part_id +"&type=1",
+            "method": "POST",
+            "mode": "cors",
+            "credentials": "include"
+            }
+        ); 
+    await sleep(50)
+}
