@@ -1,0 +1,4 @@
+document.querySelector("#idCommentFrom > input[type=hidden]").value = part_id; //в значение value можно подставить любой part_id, на него будет отправлен комментарий
+document.querySelector("#idCommentFrom > div > div:nth-child(1) > label > input").value = "8hrsk";
+document.querySelector("#comment_form").value = "lool))0)";
+document.querySelector("#idCommentFrom > div > section > button").click();
