@@ -1,0 +1,42 @@
+let max_id = 33880817;
+var id = max_id;
+
+var comments = Array(
+);
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+async function add_comment(id, comment){
+    fetch("https://ficbook.net/comment/add", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "ru,en;q=0.9",
+    "cache-control": "no-cache",
+    "content-type": "multipart/form-data; boundary=----WebKitFormBoundarylVIzvZCBe85IjxHa",
+    "pragma": "no-cache",
+    "sec-ch-ua": "\"Not?A_Brand\";v=\"8\", \"Chromium\";v=\"108\", \"Yandex\";v=\"23\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-requested-with": "XMLHttpRequest"
+  },
+  "referrer": "https://ficbook.net/readfic/8912593/22772244",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": "------WebKitFormBoundarylVIzvZCBe85IjxHa\r\nContent-Disposition: form-data; name=\"part_id\"\r\n\r\n" + id +"\r\n------WebKitFormBoundarylVIzvZCBe85IjxHa\r\nContent-Disposition: form-data; name=\"comment\"\r\n\r\n" + comment + ")\r\n------WebKitFormBoundarylVIzvZCBe85IjxHa\r\nContent-Disposition: form-data; name=\"follow_type\"\r\n\r\n1\r\n------WebKitFormBoundarylVIzvZCBe85IjxHa--\r\n",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});
+}
+
+while (true) {
+    var comment = comments[Math.floor(Math.random()*comments.length)];
+    add_comment(id, comment);
+    id -= 1;
+    await sleep(1500);
+}
