@@ -1,0 +1,55 @@
+var i = 0;
+var titles = Array(
+);
+
+var heroes = Array(
+);
+
+var desc = Array(
+);
+
+var hidden = Array(
+);
+
+//functions
+
+function rnd(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function add_save(title, heroes, desc, hidden) {
+    fetch("https://ficbook.net/requests/add_save", {
+    "headers": {
+        "accept": "*/*",
+        "accept-language": "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7",
+        "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCU3ONdQK8qXsVAPz",
+        "sec-ch-ua": "\"Chromium\";v=\"110\", \"Not A(Brand\";v=\"24\", \"Microsoft Edge\";v=\"110\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "x-requested-with": "XMLHttpRequest"
+    },
+    "referrer": "https://ficbook.net/requests/add",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": "------WebKitFormBoundaryCU3ONdQK8qXsVAPz\r\nContent-Disposition: form-data; name=\"title\"\r\n\r\n"+ title + "\r\n------WebKitFormBoundaryCU3ONdQK8qXsVAPz\r\nContent-Disposition: form-data; name=\"fandom_ids[]\"\r\n\r\n1\r\n------WebKitFormBoundaryCU3ONdQK8qXsVAPz\r\nContent-Disposition: form-data; name=\"pairing\"\r\n\r\n"+ heroes + "\r\n------WebKitFormBoundaryCU3ONdQK8qXsVAPz\r\nContent-Disposition: form-data; name=\"description\"\r\n\r\n"+ desc + "\r\n------WebKitFormBoundaryCU3ONdQK8qXsVAPz\r\nContent-Disposition: form-data; name=\"description_hidden\"\r\n\r\n"+ hidden + "\r\n------WebKitFormBoundaryCU3ONdQK8qXsVAPz\r\nContent-Disposition: form-data; name=\"ratings[]\"\r\n\r\n5\r\n------WebKitFormBoundaryCU3ONdQK8qXsVAPz\r\nContent-Disposition: form-data; name=\"directions[]\"\r\n\r\n1\r\n------WebKitFormBoundaryCU3ONdQK8qXsVAPz--\r\n",
+    "method": "POST",
+    "mode": "cors",
+    "credentials": "include"
+    });
+}
+
+while (true) {
+    title = titles[Math.floor(Math.random()*titles.length)];
+    add_save(title, heroes, desc, hidden);
+    await sleep(60);
+    i++;
+    console.log("Добавленно заявок - ", i)
+}
