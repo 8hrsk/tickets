@@ -1,0 +1,70 @@
+function addfanfic(idlist,idfanfik) {
+  fetch("https://ficbook.net/ajax/collections/addfanfic", {
+    "headers": {
+    "accept": "*/*",
+    "accept-language": "ru-RU,ru;q=0.9",
+    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "sec-ch-ua": "\"Opera\";v=\"95\", \"Chromium\";v=\"109\", \"Not;A=Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-requested-with": "XMLHttpRequest"
+    },
+    "referrer": "https://ficbook.net/readfic/[idfanfik]",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": "collection_id="+[idlist]+"&fanfic_id="+[idfanfik],
+    "method": "POST",
+    "mode": "cors",
+    "credentials": "include"
+    }
+  );
+}
+
+idfanfik = 13202070;
+namelists = Array(
+);
+
+while (true) {
+
+  namelist = namelists[Math.floor(Math.random()*namelists.length)];
+
+  fetch("https://ficbook.net/ajax/collections/create", {
+    "headers": {
+    "accept": "*/*",
+    "accept-language": "ru-RU,ru;q=0.9",
+    "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryAaGqWAP0osXcwUm0",
+    "sec-ch-ua": "\"Opera\";v=\"95\", \"Chromium\";v=\"109\", \"Not;A=Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-requested-with": "XMLHttpRequest"
+    },
+    "referrer": "https://ficbook.net/home/collections",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": "------WebKitFormBoundaryAaGqWAP0osXcwUm0\r\nContent-Disposition: form-data; name=\"name\"\r\n\r\n"+namelist+"\r\n------WebKitFormBoundaryAaGqWAP0osXcwUm0\r\nContent-Disposition: form-data; name=\"description\"\r\n\r\n\r\n------WebKitFormBoundaryAaGqWAP0osXcwUm0\r\nContent-Disposition: form-data; name=\"is_public\"\r\n\r\n1\r\n------WebKitFormBoundaryAaGqWAP0osXcwUm0--\r\n",
+    "method": "POST",
+    "mode": "cors",
+    "credentials": "include"
+    }
+  );
+
+  var selector = '#main > div.main-holder.alt > section > div:nth-child(6) > div > a'
+  var html = await (await fetch(location.href)).text();
+  var newdoc = new DOMParser().parseFromString(html, 'text/html');
+  document.querySelector(selector).outerHTML = newdoc.querySelector(selector).outerHTML;
+  let idlist = document.querySelector('#main > div.main-holder.alt > section > div:nth-child(6) > div > a').getAttribute('href');
+  idlist = idlist.split('/collections/')[1];
+
+  for (let i = 0; i <= 1000;){
+    idfanfik--
+    addfanfic(idlist,idfanfik)
+    let res = await fetch("https://ficbook.net/readfic/"+idfanfik);
+    if (res.status=='200'){i++};
+    console.log('фанфик '+idfanfik+' был добавлен. Всего - '+i)
+    await new Promise(res => setTimeout(res, 60));
+  }
+}
