@@ -27,25 +27,6 @@ function sleep(ms) {
 }
 
 var part_names = Array(
-  "part_name1",
-  "part_name2",
-  "part_name3",
-  "part_name4",
-  "part_name5",
-  "part_name6",
-  "part_name7",
-  "part_name8",
-  "part_name9",
-  "part_name10",
-  "part_name11",
-  "part_name12",
-  "part_name13",
-  "part_name14",
-  "part_name15",
-  "mne len",
-  "crutoi",
-  "bebra",
-  "cool"
 )
 
 while (true) {
