@@ -1,0 +1,210 @@
+// let users = Array();
+
+// for (let a = 1; a <= 100; a ++) {
+//   var user = Array.from(document.querySelector("#main > div.main-holder.alt > section > div:nth-child(2) > div.col-sm-16.mt-15 > table > tbody > tr:nth-child(" + a + ") > td:nth-child(3) > a").innerHTML);
+//   let username = user.reduce((acc, user) => acc + user, "\",\"");
+//   users += username;
+// }
+
+//console.log(users);
+
+var usernames = Array(
+  "Сдобная Особа",
+  "Yuliya Moon",
+  "Rossepadion",
+  "Таша Строганова",
+  "AnnaMun",
+  "Park Tae Yoon",
+  "RidgyFox",
+  "Mouru"
+  ,"Диана Верди",
+  "MarusyaVVV",
+  "Eri Moran",
+  "Interia_Sidus",
+  "relicts"
+  ,"Настасья Непременова",
+  "Eva_Grey",
+  "Bunny Kam",
+  "кумихо Мун",
+  "Sirra",
+  "Елена Ви",
+  "Франк пишет",
+  "Микита Франко",
+  "просыпаться небезопасно",
+  "chain_me",
+  "Sayako",
+  "Софи Эллисон",
+  "magnus bane",
+  "Anna Ost",
+  "Richard R",
+  "присцилла среди звёзд",
+  "Pocket Astronaut",
+  "Vincent Vertra",
+  "Min Tia",
+  "Рисунок мелом",
+  "Li_Yuri","sndngdorino",
+  "Безумный Принц","aksiomazweifel",
+  "Батон-праведник","sheva marie",
+  "Saluzzora","Волосинка на губе",
+  "iriskasviski","Mr Abomination",
+  "брикся","Adanais Vaterloy",
+  "Poppy Chase","geyshnik",
+  "Miss Eagleton","needtobreathe",
+  "Алекс Роваза","черничный кофе",
+  "Кашемирчик","Мама Альфа",
+  "Ли Соль","Mitsaeva",
+  "Волшебная Мари","Гришка Печорин",
+  "evelyn ray","yoon_ami",
+  "Li_Jeon","Вэй Илин",
+  "R.Ren","Аксиния Винтер",
+  "Sabina Tikho","Myth_S",
+  "your suga daddy","Елена Завидова",
+  "Liliya.Kim","Пьяная душа","ZZZY",
+  "SаDesa","SliFFka","богоматерь","Deus Rex",
+  "Ashimu","Useless goddes","Джинжер Че",
+  "Береника Э.П","lunisolar","Violetblackish",
+  "голубая радуга","Danilida","Толстозадый шмел",
+  "noslnosl","darketo31","Lina Rhyme",
+  "Моника Джерелл","General.Kim","NoyaJt","Imbres",
+  "Юи Судзу","полевка","T.Lay","MALFAs","Sherhin",
+  "Kate Not-Found","Нален МайГрид","Ёидзокуми-чан",
+  "сексуальная коробка","Lady Yumi",
+)
+
+let ddi; // localStorage key
+
+async function creategroupthread() { // создаем групповой чат
+  fetch("https://ficbook.net/home/messaging/creategroupthread", {
+    "headers": {
+    "accept": "application/json, text/plain, */*",
+    "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+    "content-type": "application/json",
+    "sec-ch-ua": "\"Chromium\";v=\"110\", \"Not A(Brand\";v=\"24\", \"Google Chrome\";v=\"110\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin"
+    },
+    "referrer": "https://ficbook.net/home/messaging",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": "{}",
+    "method": "POST",
+    "mode": "cors",
+    "credentials": "include"
+    }
+  )
+  .then(Response => {
+    return Response.json(); // получаем ответ
+  })
+
+  .then((data) => {
+    //var id_from_data = Array.from(data.data.id); //достаем id из ответа
+    //let threadid = id_from_data.reduce((acc, id_from_data) => acc + id_from_data); // убираем символьное разделение
+    //t_id += String(threadid); // пихаем в массив
+    ////console.log(String(threadid));
+    //let id_data = String(data.data.id);
+    //console.log(id_data);
+    //globalVar.push(id_data);
+    //console.log(globalVar);
+    localStorage.setItem(ddi, data.data.id); // save data to localStorage
+  });
+}
+
+async function adduser(t_id, username) {
+  fetch("https://ficbook.net/home/messaging/addusertothread", {
+    "headers": {
+    "accept": "application/json, text/plain, */*",
+    "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+    "content-type": "application/json",
+    "sec-ch-ua": "\"Chromium\";v=\"110\", \"Not A(Brand\";v=\"24\", \"Google Chrome\";v=\"110\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin"
+    },
+    "referrer": "https://ficbook.net/home/messaging",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": "{\"thread_id\":\" " + t_id + "\",\"username\":\"" + username + "\"}",
+    "method": "POST",
+    "mode": "cors",
+    "credentials": "include"
+    }
+  );
+}
+
+async function leave(t_id) {
+  fetch("https://ficbook.net/home/messaging/leavethread", {
+    "headers": {
+    "accept": "application/json, text/plain, */*",
+    "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+    "content-type": "application/json",
+    "sec-ch-ua": "\"Chromium\";v=\"110\", \"Not A(Brand\";v=\"24\", \"Google Chrome\";v=\"110\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin"
+    },
+    "referrer": "https://ficbook.net/home/messaging",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": "{\"thread_id\":\" " + t_id + "\"}",
+    "method": "POST",
+    "mode": "cors",
+    "credentials": "include"
+    }
+  );
+}
+
+async function send(t_id) {
+  fetch("https://ficbook.net/home/messaging/send", {
+    "headers": {
+    "accept": "application/json, text/plain, */*",
+    "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+    "content-type": "application/json",
+    "sec-ch-ua": "\"Chromium\";v=\"110\", \"Not A(Brand\";v=\"24\", \"Google Chrome\";v=\"110\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin"
+    },
+    "referrer": "https://ficbook.net/home/messaging",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": "{\"thread_id\":\" " + t_id + "\",\"text\":\"t.me/ehrsk\"}",
+    "method": "POST",
+    "mode": "cors",
+    "credentials": "include"
+    }
+  );
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+while (true) {
+
+    creategroupthread();
+    let t_id = localStorage.getItem(ddi);
+    await sleep(100);
+
+    var username = usernames[Math.floor(Math.random()*usernames.length)];
+    adduser(t_id, username);
+    await sleep(60);
+    var username = usernames[Math.floor(Math.random()*usernames.length)];
+    adduser(t_id, username);
+    await sleep(60);
+    var username = usernames[Math.floor(Math.random()*usernames.length)];
+    adduser(t_id, username);
+    await sleep(60);
+    var username = usernames[Math.floor(Math.random()*usernames.length)];
+    adduser(t_id, username);
+    await sleep(60);
+    
+    console.log('added' + username);
+    await sleep (100);
+    send(t_id);
+    console.log('send');
+}
