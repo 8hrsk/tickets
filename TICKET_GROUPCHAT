@@ -1,14 +1,4 @@
-// let users = Array();
-
-// for (let a = 1; a <= 100; a ++) {
-//   var user = Array.from(document.querySelector("#main > div.main-holder.alt > section > div:nth-child(2) > div.col-sm-16.mt-15 > table > tbody > tr:nth-child(" + a + ") > td:nth-child(3) > a").innerHTML);
-//   let username = user.reduce((acc, user) => acc + user, "\",\"");
-//   users += username;
-// }
-
-//console.log(users);
-
-var usernames = Array(
+var usernames = Array( // спарсил имена топ 100 авторов
   "Сдобная Особа",
   "Yuliya Moon",
   "Rossepadion",
@@ -99,14 +89,6 @@ async function creategroupthread() { // создаем групповой чат
   })
 
   .then((data) => {
-    //var id_from_data = Array.from(data.data.id); //достаем id из ответа
-    //let threadid = id_from_data.reduce((acc, id_from_data) => acc + id_from_data); // убираем символьное разделение
-    //t_id += String(threadid); // пихаем в массив
-    ////console.log(String(threadid));
-    //let id_data = String(data.data.id);
-    //console.log(id_data);
-    //globalVar.push(id_data);
-    //console.log(globalVar);
     localStorage.setItem(ddi, data.data.id); // save data to localStorage
   });
 }
