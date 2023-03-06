@@ -66,3 +66,79 @@ while (true) {
   save_role_remove // remove
   await sleep(80);
 }
+
+
+// alternate
+
+//let min = 4946753;
+//let max = 8248817;
+
+let author_get = 8248817;
+var author_id = author_get;
+
+function rnd(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+async function save_role_add(author_id) {
+  fetch("https://ficbook.net/ajax/save_role", { // save role (add)
+      "headers": {
+      "accept": "*/*",
+      "accept-language": "ru,en;q=0.9",
+      "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"8\", \"Chromium\";v=\"108\", \"Yandex\";v=\"23\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "same-origin",
+      "x-requested-with": "XMLHttpRequest"
+      },
+      "referrer": "https://ficbook.net/home/myfics/13251294",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "body": "fanficId=13251294&coauthorIds%5B%5D=" + author_id + "&coauthorCanEditIds%5B%5D= " + author_id,
+      "method": "POST",
+      "mode": "cors",
+      "credentials": "include"
+    }
+  );
+}
+
+async function save_role_remove() {
+  fetch("https://ficbook.net/ajax/save_role", { // save role (remove)
+      "headers": {
+      "accept": "*/*",
+      "accept-language": "ru,en;q=0.9",
+      "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+      "sec-ch-ua": "\"Not?A_Brand\";v=\"8\", \"Chromium\";v=\"108\", \"Yandex\";v=\"23\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "same-origin",
+      "x-requested-with": "XMLHttpRequest"
+      },
+      "referrer": "https://ficbook.net/home/myfics/13251294",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "body": "fanficId=13251294",
+      "method": "POST",
+      "mode": "cors",
+      "credentials": "include"
+    }
+  );
+}
+
+while (true) {
+  author_id -= 1;
+  save_role_add(author_id); // add
+  await sleep(60);
+  save_role_remove() // remove
+  await sleep(60);
+  console.log("Добавлен автор - " + author_id);
+}
