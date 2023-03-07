@@ -1,4 +1,6 @@
-async function partadd_save() {
+let fic_id = 13259111; //сюда загружаем id фанфика
+
+async function partadd_save(fic_id, part_name, part_content) {
   fetch("https://ficbook.net/home/fanfics/partadd_save", {
       "headers": {
       "accept": "*/*",
@@ -14,7 +16,7 @@ async function partadd_save() {
       },
       "referrer": "https://ficbook.net/home/myfics/13251115/addpart",
       "referrerPolicy": "strict-origin-when-cross-origin",
-      "body": "------WebKitFormBoundary4tHRQnZWCmAHKHE5\r\nContent-Disposition: form-data; name=\"fanfic_id\"\r\n\r\n13251115\r\n------WebKitFormBoundary4tHRQnZWCmAHKHE5\r\nContent-Disposition: form-data; name=\"title\"\r\n\r\n"+part_name+"\r\n------WebKitFormBoundary4tHRQnZWCmAHKHE5\r\nContent-Disposition: form-data; name=\"content\"\r\n\r\npart_content\r\n------WebKitFormBoundary4tHRQnZWCmAHKHE5\r\nContent-Disposition: form-data; name=\"comment_before\"\r\n\r\npart_comment\r\n------WebKitFormBoundary4tHRQnZWCmAHKHE5\r\nContent-Disposition: form-data; name=\"comment_after\"\r\n\r\npart_after_comment\r\n------WebKitFormBoundary4tHRQnZWCmAHKHE5--\r\n",
+      "body": "------WebKitFormBoundary4tHRQnZWCmAHKHE5\r\nContent-Disposition: form-data; name=\"fanfic_id\"\r\n\r\n " + fic_id /** пожгружаем id фанфика в функцию **/+ "\r\n------WebKitFormBoundary4tHRQnZWCmAHKHE5\r\nContent-Disposition: form-data; name=\"title\"\r\n\r\n" + part_name + /** вставляем имя части (после он случайно выберется из массива с нужными именами) **/"\r\n------WebKitFormBoundary4tHRQnZWCmAHKHE5\r\nContent-Disposition: form-data; name=\"content\"\r\n\r\n " + part_content + /** подгружаем содержание главы **/"\r\n------WebKitFormBoundary4tHRQnZWCmAHKHE5\r\nContent-Disposition: form-data; name=\"comment_before\"\r\n\r\npart_comment\r\n------WebKitFormBoundary4tHRQnZWCmAHKHE5\r\nContent-Disposition: form-data; name=\"comment_after\"\r\n\r\npart_after_comment\r\n------WebKitFormBoundary4tHRQnZWCmAHKHE5--\r\n",
       "method": "POST",
       "mode": "cors",
       "credentials": "include"
@@ -27,10 +29,16 @@ function sleep(ms) {
 }
 
 var part_names = Array(
+  "name",
+  "name1",
+  "name2",
+  "name...",
 )
+
+let part_content = String("Содержание фанфика. Вмещает до 1~1.1млн символов");
 
 while (true) {
   var part_name = part_names[Math.floor(Math.random()*part_names.length)];
-  partadd_save(part_name);
+  partadd_save(fic_id, part_name, part_content);
   await sleep(1000);
 }
