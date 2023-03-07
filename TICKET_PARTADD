@@ -1,4 +1,4 @@
-let fic_id = 13259111; //сюда загружаем id фанфика (должны иметь доступ к полному редактированию)
+let fic_id = 13259111; //сюда загружаем id фанфика (должны иметь доступ к добавлению частей)
 
 async function partadd_save(fic_id, part_name, part_content) {
   fetch("https://ficbook.net/home/fanfics/partadd_save", {
