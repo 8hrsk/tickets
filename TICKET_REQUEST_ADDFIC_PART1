@@ -1,0 +1,40 @@
+import selenium
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.service import Service
+import undetected_chromedriver as uc
+import time
+
+
+driver = uc.Chrome()
+driver.get("https://ficbook.net/login#jsLogin") # go to login page
+time.sleep(20)
+
+login = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[6]/main/div[1]/section/div/div[2]/form/div[1]/div/input")
+login.send_keys("8.h.o.u.rsking") # type in username
+
+password = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[6]/main/div[1]/section/div/div[2]/form/div[2]/div/input")
+password.send_keys("venitasperdub") # type in password
+
+login_confirm = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[6]/main/div[1]/section/div/div[2]/form/button")
+login_confirm.click() # login
+
+time.sleep(3)
+
+
+
+                                ############################
+while (True):
+    # infitite loop passing captcha
+    driver.get("https://ficbook.net/home/addfic")
+    time.sleep(0.5) # go to addfic page
+
+    agree = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[6]/main/div/section/form/div[18]/div/div/label/strong/span[1]")
+    agree.click() # accept terms
+
+    go = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[6]/main/div/section/form/button")
+    go.click() # triggering captcha
+
+    time.sleep(10) #waiting captcha to complete
+                          ######################################
