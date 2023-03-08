@@ -1,0 +1,147 @@
+var max_request_id = 671905; // here I've typed the last created request (by the moment)
+let min_request_id = 661905; // random number less than max by random value
+
+var fanfic_names = Array( // array with titles
+  "t.me/ehtsk - тут любят фикбук",
+  "t.me/ehrsk - мой тг канальчик))0)",
+  "t.me/ehrsk - я люблю фикбук",
+);
+
+let localkey; // key to localstorage
+
+async function req_add_fanfic(request_id, fanfic_name) { // create fanfic with the needed request
+  fetch("https://ficbook.net/home/addfic_save", {
+    "headers": {
+    "accept": "*/*",
+    "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+    "content-type": "multipart/form-data; boundary=----WebKitFormBoundarySf32c00cQSrrmFRq",
+    "sec-ch-ua": "\"Chromium\";v=\"110\", \"Not A(Brand\";v=\"24\", \"Google Chrome\";v=\"110\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-requested-with": "XMLHttpRequest"
+    },
+    "referrer": "https://ficbook.net/home/addfic?request_id=671904",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": "------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"request_id\"\r\n\r\n" + request_id +"\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"fic_type\"\r\n\r\nauthor_fic\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"title\"\r\n\r\n" + fanfic_name +"\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"real_author\"\r\n\r\n\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"original_link\"\r\n\r\n\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"fandom_type\"\r\n\r\nfandom\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"fandom_ids[]\"\r\n\r\n1\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"pairing\"\r\n\r\n\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"rating\"\r\n\r\n5\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"direction\"\r\n\r\n1\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"description\"\r\n\r\nfanfic_desc\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"author_comment\"\r\n\r\n\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"dedication\"\r\n\r\n\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"publication\"\r\n\r\n1\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"enable_marks\"\r\n\r\n1\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"enable_comments\"\r\n\r\n1\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"continue_enable\"\r\n\r\n1\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"continue_required_votes\"\r\n\r\n0\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"size\"\r\n\r\n2\r\n------WebKitFormBoundarySf32c00cQSrrmFRq\r\nContent-Disposition: form-data; name=\"agree\"\r\n\r\n1\r\n------WebKitFormBoundarySf32c00cQSrrmFRq--\r\n",
+    "method": "POST",
+    "mode": "cors",
+    "credentials": "include"
+    }
+    )
+    .then(Response  => {
+    return Response.json(); // getting response
+    })
+      .then((Headers) => { // getting resp. headers
+      let fanfdata = Headers.data.redirect; //getting fanfic link
+      let fanf_id = fanfdata.slice(13, 21); // here we cut fanfic_id from link
+      localStorage.setItem(localkey, fanf_id); // setting fanfic_id to hte localstorage to use it later
+      });
+}
+
+async function addpart(fanfic_id, request_id) { // here we add part
+  fetch("https://ficbook.net/home/myfics/" + fanfic_id + "/addpart", {
+    "headers": {
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+    "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+    "sec-ch-ua": "\"Chromium\";v=\"110\", \"Not A(Brand\";v=\"24\", \"Google Chrome\";v=\"110\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "document",
+    "sec-fetch-mode": "navigate",
+    "sec-fetch-site": "same-origin",
+    "sec-fetch-user": "?1",
+    "upgrade-insecure-requests": "1"
+    },
+    "referrer": "https://ficbook.net/home/addfic?request_id=" + request_id,
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": null,
+    "method": "GET",
+    "mode": "cors",
+    "credentials": "include"
+    }
+  );
+}
+
+async function partadd_save(fanfic_id) { // here we make it visible
+  fetch("https://ficbook.net/home/fanfics/partadd_save", {
+    "headers": {
+    "accept": "*/*",
+    "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+    "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryBJ5oLArKjVm3b6Am",
+    "sec-ch-ua": "\"Chromium\";v=\"110\", \"Not A(Brand\";v=\"24\", \"Google Chrome\";v=\"110\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-requested-with": "XMLHttpRequest"
+    },
+    "referrer": "https://ficbook.net/home/myfics/13262564/addpart",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": "------WebKitFormBoundaryBJ5oLArKjVm3b6Am\r\nContent-Disposition: form-data; name=\"fanfic_id\"\r\n\r\n" + fanfic_id + "\r\n------WebKitFormBoundaryBJ5oLArKjVm3b6Am\r\nContent-Disposition: form-data; name=\"title\"\r\n\r\npart_name\r\n------WebKitFormBoundaryBJ5oLArKjVm3b6Am\r\nContent-Disposition: form-data; name=\"content\"\r\n\r\npart_content\r\n------WebKitFormBoundaryBJ5oLArKjVm3b6Am\r\nContent-Disposition: form-data; name=\"comment_before\"\r\n\r\n\r\n------WebKitFormBoundaryBJ5oLArKjVm3b6Am\r\nContent-Disposition: form-data; name=\"comment_after\"\r\n\r\n\r\n------WebKitFormBoundaryBJ5oLArKjVm3b6Am--\r\n",
+    "method": "POST",
+    "mode": "cors",
+    "credentials": "include"
+    }
+  );
+}
+
+async function show_all(fanfic_id) { // here we show all parts of fanfic (not that sure if partadd_save works)
+  fetch("https://ficbook.net/home/myfics/show_all", {
+    "headers": {
+    "accept": "*/*",
+    "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+    "content-type": "multipart/form-data; boundary=----WebKitFormBoundarymOv165QXOFKwObcm",
+    "sec-ch-ua": "\"Chromium\";v=\"110\", \"Not A(Brand\";v=\"24\", \"Google Chrome\";v=\"110\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-requested-with": "XMLHttpRequest"
+    },
+    "referrer": "https://ficbook.net/home/myfics",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": "------WebKitFormBoundarymOv165QXOFKwObcm\r\nContent-Disposition: form-data; name=\"fanfic_id\"\r\n\r\n" + fanfic_id + "\r\n------WebKitFormBoundarymOv165QXOFKwObcm--\r\n",
+    "method": "POST",
+    "mode": "cors",
+    "credentials": "include"
+    }
+  );
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function rnd(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+while (true) {
+  let request_id = rnd(min_request_id, max_request_id); // generate request id
+
+  var fanfic_name = fanfic_names[Math.floor(Math.random()*fanfic_names.length)]; // choose the fanfic name from array
+
+  req_add_fanfic(request_id, fanfic_name);
+  let fanfic_id = localStorage.getItem(localkey);
+  console.log('request num - ', request_id, ' fanfic id - ', fanfic_id, ' fanfic name - ', fanfic_name);
+  await sleep(1500);
+
+  addpart(fanfic_id, request_id);
+  console.log('adpart1');
+  await sleep(100);
+
+  partadd_save(fanfic_id);
+  console.log('addpart save');
+  await sleep(100);
+
+  show_all(fanfic_id);
+  console.log('here we show all');
+  await sleep(100);
+}
