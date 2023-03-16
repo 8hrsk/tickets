@@ -1,0 +1,22 @@
+fetch("https://ficbook.net/ajax/save_role", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "sec-ch-ua": "\"Google Chrome\";v=\"111\", \"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"111\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-requested-with": "XMLHttpRequest"
+  },
+  "referrer": "https://ficbook.net/home/myfics/13285945",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": "fanficId=13285945&coauthorIds%5B%5D=4544096&coauthorIds%5B%5D=45440&coauthorIds%5B%5D=194675&coauthorIds%5B%5D=294670&coauthorIds%5B%5D=402675&coauthorIds%5B%5D=494640&coauthorCanEditIds%5B%5D=194675&coauthorCanEditIds%5B%5D=294670&coauthorCanEditIds%5B%5D=402675&coauthorCanEditIds%5B%5D=494640&coauthorCanEditIds%5B%5D=4544096&coauthorCanEditIds%5B%5D=45440",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+})
+
+//в fanfic_id вставляем знчение нужного фанфика
