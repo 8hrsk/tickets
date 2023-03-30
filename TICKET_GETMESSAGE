@@ -20,3 +20,11 @@ fetch("https://ficbook.net/home/messaging/getmessages", {
     "credentials": "include"
     }
 )
+.then(response => response.json())
+.then(data => {
+    let messages = data.data.messages; // wrapping data in array
+    console.log(`Now you'll get ${thread} lates 20 messages, where ${data.data.messages.length} is the last one.`);
+    for (let i = messages.length - 1; i >= 0; i--) { // logging all messages
+        console.log('Number: ',i + 1 ,'UserName: ', messages[i].user.id, ' Message: ', messages[i].text);
+    }
+})
