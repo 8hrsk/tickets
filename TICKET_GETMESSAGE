@@ -1,4 +1,4 @@
-let thread = '63f4ef0d56ea3a00887d88dc';
+let thread = 'paste in thread_id';
 
 fetch("https://ficbook.net/home/messaging/getmessages", {
     "headers": {
