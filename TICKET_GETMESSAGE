@@ -1,0 +1,22 @@
+let thread = '63f4ef0d56ea3a00887d88dc';
+
+fetch("https://ficbook.net/home/messaging/getmessages", {
+    "headers": {
+    "accept": "application/json, text/plain, */*",
+    "accept-language": "ru,en;q=0.9",
+    "content-type": "application/json",
+    "sec-ch-ua": "\"Not?A_Brand\";v=\"8\", \"Chromium\";v=\"108\", \"Yandex\";v=\"23\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin"
+    },
+    "referrer": "https://ficbook.net/home/messaging",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": "{\"thread_id\":\"" + thread + "\"}",
+    "method": "POST",
+    "mode": "cors",
+    "credentials": "include"
+    }
+)
