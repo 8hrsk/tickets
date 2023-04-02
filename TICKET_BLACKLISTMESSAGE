@@ -1,0 +1,92 @@
+function sendMessage(thread, message) {
+    fetch("https://ficbook.net/home/messaging/send", {
+        "headers": {
+        "accept": "application/json, text/plain, */*",
+        "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+        "content-type": "application/json",
+        "sec-ch-ua": "\"Google Chrome\";v=\"111\", \"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"111\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin"
+        },
+        "referrer": "https://ficbook.net/home/messaging?sendUserId=4946753",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "body": "{\"thread_id\":\"" + thread + "\",\"text\":\"" + message + "\"}",
+        "method": "POST",
+        "mode": "cors",
+        "credentials": "include"
+        }
+    )
+    .then(response => response.json())
+    .then(data => console.log(data))
+}
+
+let thread = '';
+
+function createThread() {
+    fetch("https://ficbook.net/home/messaging/creategroupthread", {
+        "headers": {
+        "accept": "application/json, text/plain, */*",
+        "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+        "content-type": "application/json",
+        "sec-ch-ua": "\"Google Chrome\";v=\"111\", \"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"111\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin"
+        },
+        "referrer": "https://ficbook.net/home/messaging?sendUserId=4946753",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "body": "{}",
+        "method": "POST",
+        "mode": "cors",
+        "credentials": "include"
+        }
+    )
+    .then(response => response.json())
+    .then((data) => {
+        thread = data.data.id; // here we get the thread_id from result
+        //console.log(data.data.id);
+        console.log(`Thread ${data.data.id} created`);
+    })
+}
+
+function addUser(thread) {
+    fetch("https://ficbook.net/home/messaging/addusertothread", {
+        "headers": {
+        "accept": "application/json, text/plain, */*",
+        "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+        "content-type": "application/json",
+        "sec-ch-ua": "\"Google Chrome\";v=\"111\", \"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"111\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin"
+        },
+        "referrer": "https://ficbook.net/home/messaging?sendUserId=4946753",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "body": "{\"thread_id\":\"" + thread + "\",\"username\":\"rubimann\"}", // here we add user to groupchat
+        "method": "POST",
+        "mode": "cors",
+        "credentials": "include"
+        }
+    ).then(response => response.json())
+    .then((data) => {
+        console.log(data.result, '! User added');
+    })
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const run = async () => {
+    createThread();
+    await sleep(150); // wait a little to get response with the result
+    addUser(thread);
+    sendMessage(thread, 'Hello world!');
+}
