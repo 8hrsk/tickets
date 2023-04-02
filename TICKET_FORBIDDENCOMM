@@ -1,0 +1,25 @@
+function add(part_id, comment_text) {
+    fetch("https://ficbook.net/comment/add", {
+        "headers": {
+        "accept": "*/*",
+        "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+        "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryp8Q8jM4YTSzRqMRP",
+        "sec-ch-ua": "\"Google Chrome\";v=\"111\", \"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"111\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "x-requested-with": "XMLHttpRequest"
+        },
+        "referrer": "https://ficbook.net/readfic/5951713",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "body": "------WebKitFormBoundaryp8Q8jM4YTSzRqMRP\r\nContent-Disposition: form-data; name=\"part_id\"\r\n\r\n" + part_id + "\r\n------WebKitFormBoundaryp8Q8jM4YTSzRqMRP\r\nContent-Disposition: form-data; name=\"comment\"\r\n\r\n" + comment_text + "\r\n\r\n------WebKitFormBoundaryp8Q8jM4YTSzRqMRP\r\nContent-Disposition: form-data; name=\"follow_type\"\r\n\r\n1\r\n------WebKitFormBoundaryp8Q8jM4YTSzRqMRP--\r\n",
+        "method": "POST",
+        "mode": "cors",
+        "credentials": "include"
+        }
+    )
+}
+
+add('28485811', 'Text example');
