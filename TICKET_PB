@@ -1,0 +1,32 @@
+let fanfic_id = 10128344;
+let part_id = 28485810;
+
+function pb () {
+    fetch("https://ficbook.net/ajax/public_beta", {
+        "headers": {
+        "accept": "*/*",
+        "accept-language": "ru,en;q=0.9",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "sec-ch-ua": "\"Chromium\";v=\"110\", \"Not A(Brand\";v=\"24\", \"Yandex\";v=\"23\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "x-requested-with": "XMLHttpRequest"
+        },
+        "referrer": "https://ficbook.net/readfic/10128344/28485810",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "body": "selected_text=%3Cspan%3E%D0%B1%D0%B5%D0%B6%D0%B0%D0%BB%D0%B8%3C%2Fspan%3E&context=...%D0%9F%D0%BE+%D0%BD%D0%BE%D1%87%D0%BD%D0%BE%D0%BC%D1%83+%D0%BD%D0%B5%D0%B1%D1%83+%D1%82%D1%80%D1%83%D1%81%D0%BB%D0%B8%D0%B2%D0%BE+%3Cspan+class%3D%22grammar_error%22%3E%D0%B1%D0%B5%D0%B6%D0%B0%D0%BB%D0%B8%3C%2Fspan%3E+%D0%BE%D0%B1%D0%BB%D0%B0%D1%87%D0%BA%D0%B0.+%D0%A1%D0%B8%D0%B7%D1%8B%D0%B9+%D1%81%D0%B5%D0%B2%D0%B5%D1%80%D0%BD%D1%8B%D0%B9+%D0%B2%D0%B5%D1%82%D0%B5%D1%80...&comment=texample&fanfic_id="+ fanfic_id + "&part_id=" + part_id + "&type=1",
+        "method": "POST",
+        "mode": "cors",
+        "credentials": "include"
+        }
+    )
+    .then(response => response.json())
+    .then((data) => {
+        console.log(data)
+    })
+}
+
+pb()
