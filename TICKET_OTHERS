@@ -1,0 +1,20 @@
+fetch("https://ficbook.net/home/feed", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+    "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryhzDavCLPFbf1exls",
+    "sec-ch-ua": "\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-requested-with": "XMLHttpRequest"
+  },
+  "referrer": "https://ficbook.net/home/feed",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": "------WebKitFormBoundaryhzDavCLPFbf1exls\r\nContent-Disposition: form-data; name=\"feed_view\"\r\n\r\n2\r\n------WebKitFormBoundaryhzDavCLPFbf1exls\r\nContent-Disposition: form-data; name=\"fanfic[1]\"\r\n\r\n" + "11308668" + "\r\n------WebKitFormBoundaryhzDavCLPFbf1exls--\r\n",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});
