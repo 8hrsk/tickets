@@ -1,0 +1,20 @@
+fetch("https://ficbook.net/ajax/fandoms/new_fandom", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+    "content-type": "multipart/form-data; boundary=----WebKitFormBoundarySxmq8A7r8gBX9wSE",
+    "sec-ch-ua": "\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-requested-with": "XMLHttpRequest"
+  },
+  "referrer": "https://ficbook.net/home/addfic",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": "------WebKitFormBoundarySxmq8A7r8gBX9wSE\r\nContent-Disposition: form-data; name=\"group_id\"\r\n\r\n3\r\n------WebKitFormBoundarySxmq8A7r8gBX9wSE\r\nContent-Disposition: form-data; name=\"rus_title\"\r\n\r\n)+t.me/ehrsk+б��)РУ+К�ёюЛОМ�о8=&+пжеЩлМ)+ИсЪнСчш+@-фФю7Ф-(С#с^к&хщо%У�оо+*РЗтпгЩ�ЧГИЯв*р*лВ3ХЫ\r\n------WebKitFormBoundarySxmq8A7r8gBX9wSE\r\nContent-Disposition: form-data; name=\"orig_title\"\r\n\r\n)+t.me/ehrsk+б��)РУ+К�ёюЛОМ�о8=&+пжеЩлМ)+ИсЪнСчш+@-фФю7Ф-(С#с^к&хщо%У�оо+*РЗтпгЩ�ЧГИЯв*р*лВ3ХЫ\r\n------WebKitFormBoundarySxmq8A7r8gBX9wSE\r\nContent-Disposition: form-data; name=\"fandom_type\"\r\n\r\nМультсериал\r\n------WebKitFormBoundarySxmq8A7r8gBX9wSE\r\nContent-Disposition: form-data; name=\"year\"\r\n\r\n)+t.me/ehrsk+б��)РУ+К�ёюЛОМ�о8=&+пжеЩлМ)+ИсЪнСчш+@\r\n------WebKitFormBoundarySxmq8A7r8gBX9wSE\r\nContent-Disposition: form-data; name=\"chars\"\r\n\r\n)+t.me/ehrsk+б��)РУ+К�ёюЛОМ�о8=&+пжеЩлМ)+ИсЪнСчш+@-фФю7Ф-(С#с^к&хщо%У�оо+*РЗтпгЩ�ЧГИЯв*р*лВ3ХЫ\r\n------WebKitFormBoundarySxmq8A7r8gBX9wSE--\r\n",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});
