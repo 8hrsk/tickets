@@ -1,0 +1,41 @@
+fetch("https://ficbook.net/purchase/comment_reward", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "ru,en;q=0.9",
+    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "sec-ch-ua": "\"Chromium\";v=\"110\", \"Not A(Brand\";v=\"24\", \"YaBrowser\";v=\"23\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-requested-with": "XMLHttpRequest"
+  },
+  "referrer": "https://ficbook.net/readfic/8343106/30370215?show_comments=1",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": "comment_id=113558613&user_text=%D0%9E%D1%82%D0%BB%D0%B8%D1%87%D0%BD%D1%8B%D0%B9+%D0%BE%D1%82%D0%B7%D1%8B%D0%B2!",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});
+
+fetch("https://ficbook.net/purchase/fanfic_reward", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "ru,en;q=0.9",
+    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "sec-ch-ua": "\"Chromium\";v=\"110\", \"Not A(Brand\";v=\"24\", \"YaBrowser\";v=\"23\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-requested-with": "XMLHttpRequest"
+  },
+  "referrer": "https://ficbook.net/readfic/13490873",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": "fanfic_id=10128344&user_text=%D0%9E%D1%82%D0%BB%D0%B8%D1%87%D0%BD%D0%B0%D1%8F+%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0!",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});
