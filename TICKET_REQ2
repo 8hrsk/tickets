@@ -1,0 +1,47 @@
+fetch("https://ficbook.net/ajax/requests/like", { // like
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "sec-ch-ua": "\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-requested-with": "XMLHttpRequest"
+  },
+  "referrer": "https://ficbook.net/requests/677931",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": "request_id=677931",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+}).then(response => {return response.json()})
+.then((data) => {
+    console.log(data)
+})
+
+fetch("https://ficbook.net/ajax/requests/bookmark", { // bookmark
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "sec-ch-ua": "\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-requested-with": "XMLHttpRequest"
+  },
+  "referrer": "https://ficbook.net/requests/677931",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": "request_id=677931",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+}).then(response => {return response.json()})
+.then((data) => {
+    console.log(data)
+})
