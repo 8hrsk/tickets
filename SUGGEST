@@ -1,0 +1,34 @@
+const fetchSuggest = (content) => {
+    console.log(content);
+    fetch("https://ficbook.net/news/suggestion", {
+        "headers": {
+        "accept": "*/*",
+        "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "sec-ch-ua": "\"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"114\", \"Google Chrome\";v=\"114\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "x-requested-with": "XMLHttpRequest"
+        },
+        "referrer": "https://ficbook.net/sitenews",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "body": "news_id=537&text=" + content + "%0D%0A",
+        "method": "POST",
+        "mode": "cors",
+        "credentials": "include"
+        }
+    )
+}
+
+const generateString = (neededLength) => { // just fills string with random stuff
+    let str = "abcdefghijklmnopqrst1234567890abcdefghijklmnopqrst";
+    let result = '';
+
+    for (let i = 0; i < neededLength; i++) {
+        result += str[Math.floor(Math.random() * str.length)];
+    }
+    return result;
+}
