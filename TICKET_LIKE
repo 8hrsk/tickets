@@ -1,0 +1,22 @@
+let fanfic_id = 13346634 // my fanfic for tests
+
+fetch("https://ficbook.net/ajax/mark", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "ru,en;q=0.9",
+    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "sec-ch-ua": "\"Chromium\";v=\"112\", \"YaBrowser\";v=\"23\", \"Not:A-Brand\";v=\"99\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-requested-with": "XMLHttpRequest"
+  },
+  "referrer": "https://ficbook.net/readfic/" + fanfic_id,
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": "fanfic_id=" + fanfic_id + "&action=add",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+})
