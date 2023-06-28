@@ -20,3 +20,7 @@ fetch("https://ficbook.net/ajax/mark", {
   "mode": "cors",
   "credentials": "include"
 })
+.then(response => response.json())
+.then((data) => {
+    console.log(data);
+})
