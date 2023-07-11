@@ -37,3 +37,23 @@ fetch("https://ficbook.net/srv/statistics/store/ref", { // visit
   "mode": "cors",
   "credentials": "include"
 });
+
+  fetch("https://ficbook.net/srv/statistics/store/profile", { // profile view
+    "headers": {
+      "accept": "*/*",
+      "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+      "content-type": "application/json",
+      "sec-ch-ua": "\"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"114\", \"Google Chrome\";v=\"114\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "same-origin"
+    },
+    "referrer": "https://ficbook.net/authors/4946753",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": "{\"user_id\":4946753}",
+    "method": "POST",
+    "mode": "cors",
+    "credentials": "include"
+  })
