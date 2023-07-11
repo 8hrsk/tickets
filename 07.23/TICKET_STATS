@@ -1,0 +1,39 @@
+fetch("https://ficbook.net/srv/statistics/store/pvisit", { // promo
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "ru,en;q=0.9",
+    "content-type": "text/plain;charset=UTF-8",
+    "sec-ch-ua": "\"Chromium\";v=\"112\", \"YaBrowser\";v=\"23\", \"Not:A-Brand\";v=\"99\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "no-cors",
+    "sec-fetch-site": "same-origin"
+  },
+  "referrer": "https://ficbook.net/",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": "{\"fic_id\":10493769}",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});
+
+fetch("https://ficbook.net/srv/statistics/store/ref", { // visit
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "ru,en;q=0.9",
+    "content-type": "application/json",
+    "sec-ch-ua": "\"Chromium\";v=\"112\", \"YaBrowser\";v=\"23\", \"Not:A-Brand\";v=\"99\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin"
+  },
+  "referrer": "https://ficbook.net/readfic/13227832",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": "{\"part_id\":0,\"fic_id\":10493769,\"referer\":\"ficbook.net/\"}",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});
